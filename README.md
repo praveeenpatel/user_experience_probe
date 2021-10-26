@@ -7,19 +7,27 @@ The user probe is to measure the slowness that agent and widget visitor are expe
 
 The user probe script can be also used to run load tests. 
 
-
+The MVP system runs as below, 
 1. Node program using Puppeteer to load agent and visitor page. It saves the timing data from HAR file to Mysql  database (`sqlScript.sql`). The node program has the following use cases 
    - Widget Chat Load (`/chat_loads`)
    - Video Call (`/video-calls`)
    - Cobrowse (`/cobrowse-scripts`)
 
+<br>
+
+
 2. Shell scripts utilize the node program to execute in continous (monitoring) or parallel (load test) fasion. 
+
+<br>
+
 
 3. Grafana queries the Mysql and create the dashboard for data display 
    
    `docker run -d --name=grafana -p 8000:3000 grafana/grafana`
 
-4. Grafana sends alert to slack #channel if an elevated delay is detected 
+   <br>
+
+4. Grafana sends alert to slack #perf-test if an elevated delay is detected 
 
 <br><br><br>
 
